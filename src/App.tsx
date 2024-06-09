@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+/* Layout */
+import MainLayout from './components/Layouts/mainLayout';
+/* Components */
+import Banner from './components/Banner/banner';
+import Header from './components/Header/header';
+import Hero from './components/Hero/hero';
+import About from './components/About/about';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainLayout>
+      <Banner 
+        title="New to Udemy? Learning leads to opportunity"
+        description="Shop now to get an exclusive offer:"
+        price="14.99"
+        expired="12.06.24"
+      />
+      <Header />
+      <Hero
+        title="New customer offer!"
+        description="Top courses from $13.99 when you first visit Udemy"
+      />
+      <About title='Trusted by over 16,000 companies and millions of learners around the world' />
+    </MainLayout>
+    
   );
 }
 
