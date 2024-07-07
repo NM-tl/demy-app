@@ -40,3 +40,35 @@
     transform: rotate(360deg);
   }
 }
+
+.mySwiper2 .swiper-button-prev,
+.mySwiper2 .swiper-button-next {
+  width: 2.5rem;
+}
+
+.mySwiper2 .swiper-button-prev{
+  right: -3.125rem !important;
+}
+
+.mySwiper2 .swiper-button-prev:after,
+.mySwiper2 .swiper-button-next:after {
+  content: 'prev';
+  color: white;
+  background: #3e4143;
+  align-self: center;
+  width: 2.5rem;
+  border-radius: 3.125rem;
+  font-size: 1.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mySwiper2 .swiper-button-next:after {
+  content: 'next';
+}
+
+.swiper-button-disabled {
+  display: none;
+}

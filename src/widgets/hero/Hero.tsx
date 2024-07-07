@@ -1,5 +1,5 @@
 import React from 'react';
-import sectionBg from '../../assets/hero-bg.png';
+import sectionBg from './ui/hero-bg.png';
 
 interface HeroProps {
   title: string;

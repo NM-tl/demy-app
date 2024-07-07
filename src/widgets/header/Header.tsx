@@ -1,8 +1,7 @@
-import React from 'react';
-import Control from './Control/control';
-import Search from './Search/search';
-import Logo from '../../assets/logo.svg';
-import Button from '../Button/button';
+import Control from '../../entities/control/Control';
+import Search from '../../entities/search/Search';
+import Logo from '../../shared/ui/logo.svg';
+import Button from '../../shared/button/Button';
 
 export default function Header() {
   return (

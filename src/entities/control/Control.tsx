@@ -1,8 +1,7 @@
-import React from 'react'
-import Button from '../../Button/button';
+import Button from '../../shared/button/Button';
 /* icons */
-import cart from '../../../assets/icons/cart.svg';
-import lang from '../../../assets/icons/lang.svg'
+import cart from '../../shared/ui/icons/cart.svg';
+import lang from '../../shared/ui/icons/lang.svg'
 
 export default function Control() {
   return (
