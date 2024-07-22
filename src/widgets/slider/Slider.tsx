@@ -1,4 +1,3 @@
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 
@@ -6,14 +5,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import sldie1 from '../../assets/slider/volkswagen.svg';
-import sldie2 from '../../assets/slider/att.svg';
-import sldie3 from '../../assets/slider/cisco.svg';
-import sldie4 from '../../assets/slider/citi.svg';
-import sldie5 from '../../assets/slider/ericsson.svg';
-import sldie6 from '../../assets/slider/hewlett_packard_enterprise.svg';
-import sldie7 from '../../assets/slider/procter_gamble.svg';
-import sldie8 from '../../assets/slider/samsung.svg';
+import sldie1 from './ui/volkswagen.svg';
+import sldie2 from './ui/att.svg';
+import sldie3 from './ui/cisco.svg';
+import sldie4 from './ui/citi.svg';
+import sldie5 from './ui/ericsson.svg';
+import sldie6 from './ui/hewlett_packard_enterprise.svg';
+import sldie7 from './ui/procter_gamble.svg';
+import sldie8 from './ui/samsung.svg';
 
 export default function Slider() {
     return (

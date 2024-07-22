@@ -1,14 +1,12 @@
-import React from 'react';
-import './App.css';
-/* Layout */
-import MainLayout from './components/Layouts/mainLayout';
-/* Components */
-import Banner from './components/Banner/banner';
-import Header from './components/Header/header';
-import Hero from './components/Hero/hero';
-import About from './components/About/about';
+import { FC } from 'react';
+import MainLayout from '../../shared/layouts/MainLayout';
+import Banner from '../../widgets/banner/Banner';
+import Header from '../../widgets/header/Header';
+import Hero from '../../widgets/hero/Hero';
+import About from '../../widgets/about/About';
+import Testimonials from '../../widgets/testimonials/Testimonials';
 
-function App() {
+const Home: FC = () => {
   return (
     <MainLayout>
       <Banner 
@@ -23,9 +21,9 @@ function App() {
         description="Top courses from $13.99 when you first visit Udemy"
       />
       <About title='Trusted by over 16,000 companies and millions of learners around the world' />
+      <Testimonials />
     </MainLayout>
-    
   );
-}
+};
 
-export default App;
+export default Home;

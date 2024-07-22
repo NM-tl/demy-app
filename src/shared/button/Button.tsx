@@ -1,6 +1,6 @@
 import React from 'react';
 /* Skin func */
-import { createBtnClasses } from './createBtnClass';
+import { createBtnClasses } from './CreateBtnClass';
 
 interface ButtonProps {
     name?: string;
