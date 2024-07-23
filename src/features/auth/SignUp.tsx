@@ -2,22 +2,44 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../shared/button/Button";
 import useAuth from "./helpers/useAuth";
+import useFormData from "./helpers/useFormData";
+import Lines from "./ui/Line";
 
-export default function SignUp() {  
+interface SignUpProps {
+  onClose: () => void;
+}
+
+export default function SignUp({ onClose }: SignUpProps) { 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [touchedFields, setTouchedFields] = useState<{ name: boolean; email: boolean; password: boolean }>({
+    name: false,
+    email: false,
+    password: false
+  });
   const [isFormValid, setIsFormValid] = useState(false);
+  const { saveFormData } = useFormData();
   const { errors, validate } = useAuth();
 
   useEffect(() => {
     setIsFormValid(validate(name, email, password));
-  }, [name, email, password, validate]);
+  }, [name, email, password]);
+
+  const handleBlur = (field: 'name' | 'email' | 'password') => {
+    setTouchedFields(prev => ({ ...prev, [field]: true }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate(name, email, password)) {
-      console.log("Form submitted successfully");
+      const data = {
+        name,
+        email,
+        password
+      };
+      saveFormData(data);
+      onClose();
     }
   };
 
@@ -30,8 +52,9 @@ export default function SignUp() {
           className="h-[60px] border px-5"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onBlur={() => handleBlur('name')}
         />
-        {errors.name && <span className="text-red-500">{errors.name}</span>}
+        {touchedFields.name && errors.name && <span className="text-red-500 text-xs">{errors.name}</span>}
         
         <input
           type="text"
@@ -39,8 +62,9 @@ export default function SignUp() {
           className="h-[60px] border px-5"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onBlur={() => handleBlur('email')}
         />
-        {errors.email && <span className="text-red-500">{errors.email}</span>}
+        {touchedFields.email && errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
         
         <input
           type="password"
@@ -48,10 +72,11 @@ export default function SignUp() {
           className="h-[60px] border px-5"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onBlur={() => handleBlur('password')}
         />
-        {errors.password && <span className="text-red-500">{errors.password}</span>}
+        {touchedFields.password && errors.password && <span className="text-red-500 text-xs">{errors.password}</span>}
         
-        <div className="flex">pass progress</div>
+        <Lines counter={4} status="decline" />
       </div>
       
       <label htmlFor="subscribe" className="flex gap-2 items-start text-sm">
