@@ -5,6 +5,7 @@ import Logo from '../../shared/ui/logo.svg';
 import Button from '../../shared/button/Button';
 import Modal from '../modal/Modal';
 import SignUp from '../../features/auth/SignUp';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,13 +19,15 @@ export default function Header() {
         <a href="/">
           <img src={Logo} alt="Demy" className='min-w-[200px]' width={200} height={60} />
         </a>
-        <Button
-          name='Category'
-          type="button"
-          border={false}
-          bold={false}
-          background="primary"
-        />
+        <Link to='/courses'>
+          <Button
+            name='Courses'
+            type="button"
+            border={false}
+            bold={false}
+            background="primary"
+          />
+        </Link>
         <Search />
         <div className='hidden lg:flex items-center min-w-64'>
           <Button
