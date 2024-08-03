@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-      <header className='flex w-full items-center px-6 justify-center py-2'>
+      <header className='flex w-full items-center px-6 justify-center py-2 shadow-lg relative z-10'>
         <a href="/">
           <img src={Logo} alt="Demy" className='min-w-[200px]' width={200} height={60} />
         </a>
