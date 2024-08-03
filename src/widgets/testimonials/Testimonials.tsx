@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
 import Wrapper from '../../shared/layouts/Wrapper';
 import Card from './ui/card/Card';
-import { data } from './model/data';
+import { fetchComments } from './api';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -8,7 +9,27 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const Testimonials = () => {
-  const testimonials = data.courses.flatMap(course => course.testimonials);
+  const [comments, setComments] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const data = await fetchComments();
+        setComments(data);
+      } catch (err: any) {
+        setError('Failed to load comments');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getComments();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <Wrapper background='bg-white'>
@@ -23,12 +44,12 @@ const Testimonials = () => {
             modules={[Navigation]}
             className="mySwiper2"
           >
-            {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={index} style={{ height: '100%' }}>
+            {comments.map((comment, index) => (
+              <SwiperSlide key={comment.id} style={{ height: '100%' }}>
                 <Card
-                  author={testimonial.author}
-                  review={testimonial.review}
-                  course={data.courses[index].name}
+                  author={comment.email}
+                  review={comment.body}
+                  course={`Course ${index + 1}`}
                 />
               </SwiperSlide>
             ))}

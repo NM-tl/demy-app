@@ -15,6 +15,7 @@ module.exports = {
       border: '#d1d7dc',
       courseName: '#5022c3',
       SliderNav: '#3e4143',
+      btn: '#a436f1',
     },
   },
   plugins: [],

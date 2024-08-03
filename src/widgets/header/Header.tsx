@@ -1,11 +1,20 @@
+import { useState } from 'react';
 import Control from '../../entities/control/Control';
 import Search from '../../entities/search/Search';
 import Logo from '../../shared/ui/logo.svg';
 import Button from '../../shared/button/Button';
+import Modal from '../modal/Modal';
+import SignUp from '../../features/auth/SignUp';
 
 export default function Header() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => setIsModalVisible(true);
+  const handleCloseModal = () => setIsModalVisible(false);
+
   return (
-    <header className='flex w-full items-center px-6 justify-center py-2'>
+    <>
+      <header className='flex w-full items-center px-6 justify-center py-2'>
         <a href="/">
           <img src={Logo} alt="Demy" className='min-w-[200px]' width={200} height={60} />
         </a>
@@ -32,8 +41,16 @@ export default function Header() {
             bold={false}
             background="primary"
           />
-          </div>
-        <Control />
-    </header>
-  )
+        </div>
+        <Control onOpenModal={handleOpenModal} />
+      </header>
+      <Modal
+        type='signup'
+        title='Sign up and start learning'
+        content={<SignUp onClose={handleCloseModal} />}
+        isVisible={isModalVisible}
+        onClose={handleCloseModal}
+      />
+    </>
+  );
 }

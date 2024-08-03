@@ -16,7 +16,7 @@ const Card: FC<CardProps> = ({ author, review, course }) => {
                 <div className='flex flex-col gap-4'>
                     <img src={quoteIcon} alt="quote" className='w-8 h-8' />
                     <div className='flex flex-col justify-between h-40'>
-                        <p dangerouslySetInnerHTML={{ __html: review }} className='text-base'></p>
+                        <p dangerouslySetInnerHTML={{ __html: review }} className='text-base max-h-32 overflow-auto'></p>
                         <CircleShort name={author} />
                     </div>
                 </div>
